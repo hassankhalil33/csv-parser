@@ -1,7 +1,8 @@
 #CSV Data Parser v1.0
 #Author: Hassan Khalil
-#Will Output: All Average, Monthly Average, Monthly Max, Monthly Min
-#Parses Data from 01-01-2000 till 31-12-2022 regardless of position
+#Will Output: All Average, Monthly Average, Monthly Maximum, Monthly Minimum
+#Parses Data from 01-01-2000 till 31-12-2022 regardless of order
+#Data MUST Match Example CSV
 
 
 #IMPORTS
@@ -86,6 +87,33 @@ def monthly_maximum(array, months):
         year -= 1
         month = 12
 
+#prints minimum value per month 
+def monthly_minimum(array, months):
+    minimum = 0
+    year = 22
+    month = 12
+    operations = 0
+
+    while year > 0:
+        while month > 0:
+            for i in array:
+                if int(i[0][:2]) == month and int(i[0][3:]) == year: #split months and years
+                    if minimum == 0: #save the first number 
+                        minimum = i[1]
+
+                    elif i[1] < minimum:
+                        minimum = i[1]
+                        operations += 1
+                
+            if operations != 0: #if month entry exists
+                print(f"For Month {months[month]} of Year 20{year}. Minimum is: {minimum}")
+                minimum = 0
+                operations = 0
+
+            month -= 1 
+        year -= 1
+        month = 12
+
 
 #MAIN
 
@@ -102,7 +130,9 @@ for i, l in enumerate(my_list):
     my_list[i][0] = l[0][3:]
     my_list[i][1] = float(l[1])
 
+#print data
 print(my_list)
 print(find_average_all(my_list))
 monthly_average(my_list, months)
 monthly_maximum(my_list, months)
+monthly_minimum(my_list, months)
