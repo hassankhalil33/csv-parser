@@ -33,21 +33,25 @@ def find_average_all(array):
 #prints average per month   
 def monthly_average(array, months):
     total = 0
+    year = 22
     month = 12
     operations = 0
 
-    while month > 0:
-        for i in array:
-            if int(i[0][:2]) == month:
-                total += i[1]
-                operations += 1
+    while year > 0:
+        while month > 0:
+            for i in array:
+                if int(i[0][:2]) == month and int(i[0][3:]) == year:
+                    total += i[1]
+                    operations += 1
 
-        if operations != 0:
-            print(f"For Month {months[month]}: Average is {total / operations}")
-            total = 0
-            operations = 0
+            if operations != 0:
+                print(f"For Month {months[month]} of Year 20{year}. Average is: {total / operations}")
+                total = 0
+                operations = 0
 
-        month -= 1
+            month -= 1
+        year -= 1
+        month = 12
 
 
 #MAIN
