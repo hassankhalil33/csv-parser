@@ -29,7 +29,8 @@ def find_average_all(array):
         total += i[1]
 
     return total / len(array)
-        
+
+#prints average per month   
 def monthly_average(array, months):
     total = 0
     month = 12
@@ -37,16 +38,16 @@ def monthly_average(array, months):
 
     while month > 0:
         for i in array:
-            if int(i[0][:3]) == month:
+            if int(i[0][:2]) == month:
                 total += i[1]
                 operations += 1
 
-            else:
-                print(f"For Month {months[month]}: Average is {total / operations}")
-                month -= 1
-                total = 0
-                operations = 0
-                break
+        if operations != 0:
+            print(f"For Month {months[month]}: Average is {total / operations}")
+            total = 0
+            operations = 0
+
+        month -= 1
 
 
 #MAIN
@@ -66,3 +67,4 @@ for i, l in enumerate(my_list):
 
 print(my_list)
 print(find_average_all(my_list))
+monthly_average(my_list, months)
