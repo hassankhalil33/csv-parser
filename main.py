@@ -1,15 +1,30 @@
 import csv
 
-my_dict = []
+#Init Variables
 
+my_list = []
+
+
+#Functions
+
+
+
+
+#Main
+
+#read csv file
 with open("./test.csv", 'r') as file:
     csvreader = csv.reader(file)
     for row in csvreader:
-        x = row[0].split("\t")
-        my_dict.append(x)
+        r = row[0].split("\t")
+        my_list.append(r)
     
-    my_dict.pop(0)
-    print(my_dict)
+    my_list.pop(0)
 
 
+#remove unneccesary day info
+for i, l in enumerate(my_list):
+    my_list[i][0] = l[0][3:]
 
+
+print(my_list)
