@@ -22,9 +22,10 @@ with open("./test.csv", 'r') as file:
     my_list.pop(0)
 
 
-#remove unneccesary day info
+#remove unneccesary day info and convert string data to float
 for i, l in enumerate(my_list):
     my_list[i][0] = l[0][3:]
+    my_list[i][1] = float(l[1])
 
 
 print(my_list)
