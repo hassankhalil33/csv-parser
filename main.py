@@ -62,6 +62,30 @@ def monthly_average(array, months):
         year -= 1
         month = 12
 
+#prints maximum value per month 
+def monthly_maximum(array, months):
+    maximum = 0
+    year = 22
+    month = 12
+    operations = 0
+
+    while year > 0:
+        while month > 0:
+            for i in array:
+                if int(i[0][:2]) == month and int(i[0][3:]) == year: #split months and years
+                    if i[1] > maximum:
+                        maximum = i[1]
+                        operations += 1
+                
+            if operations != 0: #if month entry exists
+                print(f"For Month {months[month]} of Year 20{year}. Maximum is: {maximum}")
+                maximum = 0
+                operations = 0
+
+            month -= 1 
+        year -= 1
+        month = 12
+
 
 #MAIN
 
@@ -81,3 +105,4 @@ for i, l in enumerate(my_list):
 print(my_list)
 print(find_average_all(my_list))
 monthly_average(my_list, months)
+monthly_maximum(my_list, months)
