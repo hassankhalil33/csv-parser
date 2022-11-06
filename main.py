@@ -4,7 +4,10 @@
 #Parses Data from 01-01-2000 till 31-12-2022 regardless of position
 
 
+#IMPORTS
+
 import csv
+
 
 #INIT
 
@@ -46,16 +49,16 @@ def monthly_average(array, months):
     while year > 0:
         while month > 0:
             for i in array:
-                if int(i[0][:2]) == month and int(i[0][3:]) == year:
+                if int(i[0][:2]) == month and int(i[0][3:]) == year: #split months and years
                     total += i[1]
                     operations += 1
 
-            if operations != 0:
+            if operations != 0: #if month entry exists
                 print(f"For Month {months[month]} of Year 20{year}. Average is: {total / operations}")
                 total = 0
                 operations = 0
 
-            month -= 1
+            month -= 1 
         year -= 1
         month = 12
 
@@ -64,11 +67,11 @@ def monthly_average(array, months):
 
 #read csv file
 with open("./test.csv", 'r') as file:
-    csvreader = csv.reader(file)
+    csvreader = csv.reader(file) #read file
     for row in csvreader:
-        r = row[0].split("\t")
+        r = row[0].split("\t") #split by \t
         my_list.append(r)
-    my_list.pop(0)
+    my_list.pop(0) #remove title
 
 #remove unneccesary day info and convert string data to float
 for i, l in enumerate(my_list):
