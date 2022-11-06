@@ -3,6 +3,20 @@ import csv
 #INIT
 
 my_list = []
+months = {
+    1: "January",
+    2: "February",
+    3: "March",
+    4: "April",
+    5: "May",
+    6: "June",
+    7: "July",
+    8: "August",
+    9: "September",
+    10: "October",
+    11: "November",
+    12: "December"
+}
 
 
 #FUNCTIONS
@@ -16,6 +30,24 @@ def find_average_all(array):
 
     return total / len(array)
         
+def monthly_average(array, months):
+    total = 0
+    month = 12
+    operations = 0
+
+    while month > 0:
+        for i in array:
+            if int(i[0][:3]) == month:
+                total += i[1]
+                operations += 1
+
+            else:
+                print(f"For Month {months[month]}: Average is {total / operations}")
+                month -= 1
+                total = 0
+                operations = 0
+                break
+
 
 #MAIN
 
