@@ -1,3 +1,9 @@
+#CSV Data Parser v1.0
+#Author: Hassan Khalil
+#Will Output: All Average, Monthly Average, Monthly Max, Monthly Min
+#Parses Data from 01-01-2000 till 31-12-2022 regardless of position
+
+
 import csv
 
 #INIT
@@ -21,7 +27,7 @@ months = {
 
 #FUNCTIONS
 
-#find average of all data input
+#find average of all data input O(n)
 def find_average_all(array):
     total = 0
 
@@ -30,7 +36,7 @@ def find_average_all(array):
 
     return total / len(array)
 
-#prints average per month   
+#prints average per month O(n)
 def monthly_average(array, months):
     total = 0
     year = 22
