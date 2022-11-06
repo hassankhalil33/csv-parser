@@ -73,7 +73,7 @@ def monthly_average(array, months):
         year -= 1
         month = 12
 
-#prints maximum value per month 
+#prints maximum value per month O(n)
 def monthly_maximum(array, months):
     maximum = 0
     year = 22
@@ -97,7 +97,7 @@ def monthly_maximum(array, months):
         year -= 1
         month = 12
 
-#prints minimum value per month 
+#prints minimum value per month O(n)
 def monthly_minimum(array, months):
     minimum = 0
     year = 22
@@ -131,7 +131,7 @@ def monthly_minimum(array, months):
 print("Welcome to CSV Data Parser v1.0")
 address = input("Please input address of .csv file")
 
-#remove unneccesary day info and convert string data to float
+#remove unneccesary date/value title and convert string data to float
 for i, l in enumerate(my_list):
     my_list[i][0] = l[0][3:]
     my_list[i][1] = float(l[1])
