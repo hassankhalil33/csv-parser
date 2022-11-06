@@ -136,14 +136,14 @@ print("Welcome to CSV Data Parser v1.0")
 address = input("Please input address of .csv file: ")
 my_list = read_file(address)
 
+#check if empty data
+if len(my_list) < 2:
+    raise Exception("Invalid Address or Empty CSV File!")
+
 #remove unneccesary date/value title and convert string data to float
 for i, l in enumerate(my_list):
     my_list[i][0] = l[0][3:]
     my_list[i][1] = float(l[1])
-
-#check if empty data
-if len(my_list) == 0:
-    raise Exception("Invalid Address or Empty CSV File!")
 
 #print data
 print(f"Total Average is: {find_average_all(my_list)}")
