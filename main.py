@@ -12,6 +12,7 @@ import csv
 
 #INIT
 
+address = ""
 my_list = []
 months = {
     1: "January",
@@ -30,6 +31,15 @@ months = {
 
 
 #FUNCTIONS
+
+#read csv file
+def read_file(address):
+    with open(address, 'r') as file:
+        csvreader = csv.reader(file) #read file
+        for row in csvreader:
+            r = row[0].split("\t") #split by \t
+            my_list.append(r)
+        my_list.pop(0) #remove title
 
 #find average of all data input O(n)
 def find_average_all(array):
@@ -117,13 +127,9 @@ def monthly_minimum(array, months):
 
 #MAIN
 
-#read csv file
-with open("./test.csv", 'r') as file:
-    csvreader = csv.reader(file) #read file
-    for row in csvreader:
-        r = row[0].split("\t") #split by \t
-        my_list.append(r)
-    my_list.pop(0) #remove title
+#input address
+print("Welcome to CSV Data Parser v1.0")
+address = input("Please input address of .csv file")
 
 #remove unneccesary day info and convert string data to float
 for i, l in enumerate(my_list):
@@ -131,7 +137,6 @@ for i, l in enumerate(my_list):
     my_list[i][1] = float(l[1])
 
 #print data
-print(my_list)
 print(find_average_all(my_list))
 monthly_average(my_list, months)
 monthly_maximum(my_list, months)
