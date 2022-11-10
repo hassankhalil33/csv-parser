@@ -39,8 +39,7 @@ def read_file(address):
     with open(address, 'r') as file:
         csvreader = csv.reader(file) #read file
         for row in csvreader:
-            r = row[0].split("\t") #split by \t
-            array.append(r)
+            array.append(row)
         array.pop(0) #remove title
 
     return array
@@ -139,6 +138,8 @@ my_list = read_file(address)
 #check if empty data
 if len(my_list) < 2:
     raise Exception("Invalid Address or Empty CSV File!")
+
+print(my_list)
 
 #remove unneccesary date/value title and convert string data to float
 for i, l in enumerate(my_list):
