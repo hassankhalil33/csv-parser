@@ -139,8 +139,6 @@ my_list = read_file(address)
 if len(my_list) < 2:
     raise Exception("Invalid Address or Empty CSV File!")
 
-print(my_list)
-
 #remove unneccesary date/value title and convert string data to float
 for i, l in enumerate(my_list):
     my_list[i][0] = l[0][3:]
